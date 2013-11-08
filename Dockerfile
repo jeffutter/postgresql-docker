@@ -12,7 +12,8 @@ RUN dpkg-divert --local --rename --add /sbin/initctl
 RUN ln -s /bin/true /sbin/initctl
 
 RUN apt-get update
-RUN LC_ALL=C DEBIAN_FRONTEND=noninteractive apt-get -y install postgresql postgresql-contrib-9.1 vim-tiny
+RUN locale-gen en_US.UTF-8
+RUN LC_ALL=en_US.UTF-8 DEBIAN_FRONTEND=noninteractive apt-get -y install postgresql postgresql-contrib-9.1 vim-tiny
 
 # allow autostart again
 RUN	rm /usr/sbin/policy-rc.d
