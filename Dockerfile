@@ -19,7 +19,7 @@ RUN dpkg-divert --local --rename --add /sbin/initctl
 RUN ln -s /bin/true /sbin/initctl
 
 RUN apt-get update
-RUN apt-get -y install postgresql postgresql-contrib-9.1
+RUN apt-get -y install postgresql postgresql-contrib-9.1 vim-tiny
 
 # allow autostart again
 RUN	rm /usr/sbin/policy-rc.d
