@@ -2,7 +2,7 @@
 #
 # VERSION               0.0.1
 
-FROM      ubuntu
+FROM      ubuntu:12.04
 MAINTAINER Jeffery Utter "jeff@jeffutter.com"
 
 ENV LANG en_US.UTF-8
