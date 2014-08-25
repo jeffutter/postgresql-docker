@@ -29,9 +29,9 @@ RUN	rm /usr/sbin/policy-rc.d
 
 RUN echo 'host all all 0.0.0.0/0 md5' >> /etc/postgresql/9.3/main/pg_hba.conf
 RUN ex -sc "%s/#listen_addresses = 'localhost'/listen_addresses = '*'/g" -c "x" /etc/postgresql/9.3/main/postgresql.conf ;\
-    ex -sc "%s#/etc/ssl/certs/#/var/lib/postgresql/9.3/main/#g" -c "x" /etc/postgresql/9.3/main/postgresql.conf ;\
-    ex -sc "%s#/etc/ssl/private/#/var/lib/postgresql/9.3/main/#g" -c "x" /etc/postgresql/9.3/main/postgresql.conf
-RUN cp /etc/ssl/certs/ssl-cert-snakeoil.pem /var/lib/postgresql/9.3/main/ ;\
+    sed -i  "s#/etc/ssl/certs/#/var/lib/postgresql/9.3/main/#" /etc/postgresql/9.3/main/postgresql.conf ;\
+    sed -i  "s#/etc/ssl/private/#/var/lib/postgresql/9.3/main/#" /etc/postgresql/9.3/main/postgresql.conf ;\
+    cp /etc/ssl/certs/ssl-cert-snakeoil.pem /var/lib/postgresql/9.3/main/ ;\
     cp /etc/ssl/private/ssl-cert-snakeoil.key /var/lib/postgresql/9.3/main/ ;\
     chown -R postgres:postgres /var/lib/postgresql/9.3/main/ssl-cert-snakeoil.*
 
